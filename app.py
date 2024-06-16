@@ -4,24 +4,22 @@ from flask import Flask, request, render_template
 import os
 import numpy as np
 
-# Create flask app
+# Create Flask app
 flask_app = Flask(__name__)
 
 # Define the paths to the model, scaler, and imputer
-model_path = os.path.join(os.path.dirname(__file__), 'model.pkl')
-scaler_path = os.path.join(os.path.dirname(__file__), 'scaler.pkl')
-imputer_path = os.path.join(os.path.dirname(__file__), 'imputer.pkl')
+model_path = 'model.pkl'
+scaler_path = 'scaler.pkl'
+imputer_path = 'imputer.pkl'
 
 # Load the pickle model, scaler, and imputer
 model = pickle.load(open(model_path, "rb"))
 scaler = pickle.load(open(scaler_path, "rb"))
 imputer = pickle.load(open(imputer_path, "rb"))
 
-
 @flask_app.route("/")
 def Home():
     return render_template("index.html")
-
 
 @flask_app.route("/predict", methods=["POST"])
 def predict():
@@ -60,6 +58,6 @@ def predict():
 
         return render_template("index.html", prediction_text=f"Predicted wine qualities are {output}")
 
-
 if __name__ == "__main__":
-    flask_app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    flask_app.run(host='0.0.0.0', port=port)
