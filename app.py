@@ -29,7 +29,7 @@ def predict():
 
     file = request.files['file']
 
-    # If user does not select file, browser also submit an empty part without filename
+    # If user does not select file, browser also submits an empty part without filename
     if file.filename == '':
         return render_template("index.html", prediction_text="No selected file")
 
@@ -50,7 +50,7 @@ def predict():
         # Making prediction using the loaded model
         prediction = model.predict(features)
 
-        # Clip the predictions to be between 1 and 10
+        # Clip the predictions to be between 4 and 7
         output = np.clip(prediction, 4, 7)
 
         # Round the output for display
