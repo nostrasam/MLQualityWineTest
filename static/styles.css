@@ -1,0 +1,23 @@
+body {
+    background-image: url('../static/winelogo.jpg');
+    background-size: cover;
+    background-color: beige;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: #f0b6b6;
+    text-align: center;
+    padding-top: 50px;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#form-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 20px;
+}

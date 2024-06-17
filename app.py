@@ -51,7 +51,7 @@ def predict():
         prediction = model.predict(features)
 
         # Clip the predictions to be between 1 and 10
-        output = np.clip(prediction, 1, 10)
+        output = np.clip(prediction, 4, 7)
 
         # Round the output for display
         output = [round(pred, 2) for pred in output]
@@ -59,5 +59,4 @@ def predict():
         return render_template("index.html", prediction_text=f"Predicted wine qualities are {output}")
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    flask_app.run(host='0.0.0.0', port=port)
+    flask_app.run(host='0.0.0.0', port=80)
